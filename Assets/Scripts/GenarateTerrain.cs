@@ -7,7 +7,7 @@ public class GenarateTerrain : MonoBehaviour
 
     public GameObject terrainPrefabs = null;
 
-    private int xcordinate = -70;
+    private int xcordinate = -210;
 
 
     private void OnTriggerEnter(Collider other)

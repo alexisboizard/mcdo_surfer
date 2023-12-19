@@ -30,6 +30,11 @@ public class Player : MonoBehaviour
                 desiredLane = 3;
         }
         moveOnLane(desiredLane);
+         
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
     }
 
     void moveOnLane(int lane)
@@ -49,8 +54,17 @@ public class Player : MonoBehaviour
         }
         inputMovement.x = -1 * speed * Time.deltaTime* thespeed + transform.position.x;
       
-        Debug.Log("speed :" + thespeed);
-        inputMovement.y = transform.position.y;
+         inputMovement.y =  transform.position.y;
         transform.position = inputMovement;
+    }
+
+    void Jump()
+    {
+        Vector3 inputMovement = Vector3.zero;
+        inputMovement.y = transform.position.y + 5.0f;
+        inputMovement.x = transform.position.x;
+        inputMovement.z = transform.position.z;
+        transform.position = inputMovement;
+
     }
 }
