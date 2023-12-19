@@ -441,6 +441,8 @@ GameObject:
   - component: {fileID: 1482599781}
   - component: {fileID: 1482599780}
   - component: {fileID: 1482599785}
+  - component: {fileID: 1482599786}
+  - component: {fileID: 1482599787}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -555,7 +557,7 @@ Transform:
   m_GameObject: {fileID: 1482599779}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.11, y: 1.69, z: 0}
+  m_LocalPosition: {x: 23, y: 1.69, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -574,8 +576,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!114 &1482599786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482599779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d46b6bb3476ce4b9c693b51be8c72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   rigidbody: {fileID: 1482599780}
-  inputActionReference: {fileID: -8019083242670932207, guid: a39d085b6a88c4fd58b9c79ac01fec29, type: 3}
+--- !u!114 &1482599787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482599779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8542eb74efb434640bcfcdd9f8cfb1a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1717660771}
+  target: {fileID: 1482599779}
 --- !u!1 &1631825313
 GameObject:
   m_ObjectHideFlags: 0

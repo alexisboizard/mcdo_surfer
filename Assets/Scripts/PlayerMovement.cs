@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public float speed = 10.0f;
     private int desiredLane = 2; // 1: Left, 2: Middle, 3: Right
+    public float playerLevel;
 
     // Update is called once per frame
     void Update()
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            Debug.Log("Right Arrow Pressed");
             if (desiredLane == 1)
                 desiredLane = 2;
             else
@@ -30,17 +32,21 @@ public class Player : MonoBehaviour
 
     void moveOnLane(int lane)
     {
+        Vector3 inputMovement = Vector3.zero;
         if (lane == 1)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -3f);
+            inputMovement.z = -3f;
         }
         else if (lane == 2)
         {
-            transform.position = new Vector3(transform.position.y, transform.position.y, 0.0f);
+            inputMovement.z = 0.0f;
         }
         else if (lane == 3)
         {
-            transform.position = new Vector3(transform.position.y, transform.position.y, 3.0f);
+            inputMovement.z = 3.0f;
         }
+        inputMovement.x = -1 * speed * Time.deltaTime + transform.position.x;
+        inputMovement.y = playerLevel;
+        transform.position = inputMovement;
     }
 }
