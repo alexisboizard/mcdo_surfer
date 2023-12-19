@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     private int desiredLane = 2; // 1: Left, 2: Middle, 3: Right
     public float playerLevel;
 
+    private float thespeed = 2.0f;
+
     // Update is called once per frame
     void Update()
     {
@@ -45,8 +47,10 @@ public class Player : MonoBehaviour
         {
             inputMovement.z = 3.0f;
         }
-        inputMovement.x = -1 * speed * Time.deltaTime + transform.position.x;
-        inputMovement.y = playerLevel;
+        inputMovement.x = -1 * speed * Time.deltaTime* thespeed + transform.position.x;
+      
+        Debug.Log("speed :" + thespeed);
+        inputMovement.y = transform.position.y;
         transform.position = inputMovement;
     }
 }

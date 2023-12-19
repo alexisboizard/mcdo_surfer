@@ -5,9 +5,9 @@ using UnityEngine;
 public class GenarateTerrain : MonoBehaviour
 {
 
-    public GameObject terrainPrefabs;
+    public GameObject terrainPrefabs = null;
 
-    private int xcordinate = -210;
+    private int xcordinate = -70;
 
 
     private void OnTriggerEnter(Collider other)
