@@ -8,8 +8,10 @@ public class Player : MonoBehaviour
     public float speed = 10.0f;
     private int desiredLane = 2; // 1: Left, 2: Middle, 3: Right
     public float playerLevel;
+    public Animator animator;
 
     private float thespeed = 2.0f;
+    private bool isJumping = false;
 
     // Update is called once per frame
     void Update()
@@ -30,11 +32,7 @@ public class Player : MonoBehaviour
                 desiredLane = 3;
         }
         moveOnLane(desiredLane);
-         
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
+
     }
 
     void moveOnLane(int lane)
@@ -52,19 +50,9 @@ public class Player : MonoBehaviour
         {
             inputMovement.z = 3.0f;
         }
-        inputMovement.x = -1 * speed * Time.deltaTime* thespeed + transform.position.x;
-      
-         inputMovement.y =  transform.position.y;
-        transform.position = inputMovement;
-    }
+        inputMovement.x = -1 * speed * Time.deltaTime * thespeed + transform.position.x;
 
-    void Jump()
-    {
-        Vector3 inputMovement = Vector3.zero;
-        inputMovement.y = transform.position.y + 5.0f;
-        inputMovement.x = transform.position.x;
-        inputMovement.z = transform.position.z;
+        inputMovement.y = transform.position.y;
         transform.position = inputMovement;
-
     }
 }
