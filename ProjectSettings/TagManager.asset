@@ -5,16 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Terrain
+  - Voitures
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Voiture
   - Water
   - UI
   - Ground
   - GroundCheck
-  - 
+  - Player
   - 
   - 
   - 

@@ -1,58 +1,80 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
+using TMPro;
 
-public class Player : MonoBehaviour
+
+public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10.0f;
+    public float speedMultiplier = 0.1f; // Ajustez ce coefficient selon vos besoins
+    public TMP_Text scoreText;
+
     private int desiredLane = 2; // 1: Left, 2: Middle, 3: Right
-    public float playerLevel;
-    public Animator animator;
+    Vector3 inputMovement = Vector3.zero;
 
-    private float thespeed = 2.0f;
-    private bool isJumping = false;
+    private float startTime;
+    private float score;
 
+    void Start()
+    {
+        startTime = Time.time;
+    }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (desiredLane == 3)
-                desiredLane = 2;
-            else
-                desiredLane = 1;
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Debug.Log("Right Arrow Pressed");
-            if (desiredLane == 1)
-                desiredLane = 2;
-            else
-                desiredLane = 3;
-        }
-        moveOnLane(desiredLane);
+        // Calcule le temps écoulé depuis le début du jeu
+        float elapsedTime = Time.time - startTime;
 
+        // Score basé sur le temps écoulé (ajuster la formule selon vos besoins)
+        score = Mathf.Floor(elapsedTime);
+
+        // Affiche ou utilise le score dans le jeu
+        inputMovement.x = transform.position.x;
+        inputMovement.y = transform.position.y;
+        transform.position = inputMovement;
+        float newSpeed = speed + score * speedMultiplier;
+
+        // Applique la nouvelle vitesse au joueur
+        transform.Translate(Vector3.forward * newSpeed * Time.deltaTime);
+        scoreText.text = score.ToString();
     }
 
-    void moveOnLane(int lane)
+    void OnCollisionEnter(Collision collision)
     {
-        Vector3 inputMovement = Vector3.zero;
+        if (collision.collider.name == "Car")
+        {
+            Debug.Log(transform.position.z);
+            float position = transform.position.z;
+            switch (position)
+            {
+                case 0.25f:
+                    desiredLane = 1;
+                    break;
+                case -3.25f:
+                    desiredLane = 2;
+                    break;
+                case 3.25f:
+                    desiredLane = 2;
+                    break;
+            }
+
+        }
+    }
+    public void moveOnLane(int lane)
+    {
         if (lane == 1)
         {
-            inputMovement.z = -3f;
+            inputMovement.z = -3.25f;
         }
         else if (lane == 2)
         {
-            inputMovement.z = 0.0f;
+            inputMovement.z = 0.25f;
         }
         else if (lane == 3)
         {
-            inputMovement.z = 3.0f;
+            inputMovement.z = 3.25f;
         }
-        inputMovement.x = -1 * speed * Time.deltaTime * thespeed + transform.position.x;
-
-        inputMovement.y = transform.position.y;
-        transform.position = inputMovement;
     }
 }

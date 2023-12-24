@@ -26,7 +26,7 @@ public class JumpBehavior : MonoBehaviour
         Jump();
     }
 
-    private void Jump()
+    public void Jump()
     {
         if (groundCheck.isGroundCheck)
         {
