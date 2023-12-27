@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 
@@ -13,12 +14,13 @@ public class Nuggets_recolt : MonoBehaviour
     private void GenerateNugget()
     {
         float xcoodonate = transform.position.x;
-        float ycoodonate = transform.rotation.y;
+        float ycoodonate = transform.rotation.y + 2f;
         float zcoodonate = transform.position.z;
 
+        int[] choices = { -3, 0, 3 };
+        int randomIndex = Random.Range(0, choices.Length);
 
-
-        spawnpoint = new Vector3(xcoodonate - 50f, ycoodonate+2f, zcoodonate);
+        spawnpoint = new Vector3(xcoodonate - 50f, ycoodonate, randomIndex);
         Instantiate(recoltPrefab, spawnpoint, Quaternion.identity);
 
     }
@@ -26,22 +28,29 @@ public class Nuggets_recolt : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         GenerateNugget();
-        //Check if object touched has coin tag 
         if (collision.gameObject.tag == "Coin")
-        {
-            
-            Debug.Log("J'ai touché un coin");
-            //Detruit l objet colisionner
-            string text = scoreText.text;
-            if (float.TryParse(text, out float originalNumber)) { 
-            float newnumber = originalNumber * 2;
-                scoreText.text = newnumber.ToString();
-            }
-            else
-            {
-                Debug.Log("g pas pu pârse");
-            }
+        { 
+            IncrementNumber();
             Destroy(collision.gameObject.gameObject);
+        }
+    }
+
+
+    private void IncrementNumber()
+    {
+        string text = scoreText.text;
+
+
+        if (float.TryParse(text, out float originalNumber))
+        {
+            Debug.Log("le old is " + originalNumber);
+            float newnumber = originalNumber + 1;
+            Debug.Log("le new is " + newnumber);
+            scoreText.text = newnumber.ToString();
+        }
+        else
+        {
+            Debug.Log("g pas pu pârse");
         }
     }
 
