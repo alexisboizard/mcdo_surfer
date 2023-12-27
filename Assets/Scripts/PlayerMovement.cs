@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 inputMovement = Vector3.zero;
 
     private float startTime;
-    private float score;
+    public float score;
 
     void Start()
     {

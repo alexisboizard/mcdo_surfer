@@ -8071,6 +8071,7 @@ MonoBehaviour:
   speed: 10
   speedMultiplier: 0.5
   scoreText: {fileID: 353991965}
+  score: 0
 --- !u!114 &1663435836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8127,7 +8128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2330613fe7643bf4c8ea6416ed7d62b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoltPrefab: {fileID: 919132149155446097, guid: f17bc67a8912886459ab4efd91d40436, type: 3}
+  recoltPrefab: {fileID: 6312059064644254483, guid: 20c813bac2c40ce4ab49eef85ce5685d, type: 3}
+  scoreText: {fileID: 353991965}
 --- !u!1 &1676877187
 GameObject:
   m_ObjectHideFlags: 0

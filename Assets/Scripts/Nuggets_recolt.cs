@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Nuggets_recolt : MonoBehaviour
@@ -7,6 +8,7 @@ public class Nuggets_recolt : MonoBehaviour
 
     public GameObject recoltPrefab;
     private Vector3 spawnpoint;
+    public TMP_Text scoreText;
 
     private void GenerateNugget()
     {
@@ -23,14 +25,23 @@ public class Nuggets_recolt : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        GenerateNugget();
         //Check if object touched has coin tag 
-        if(collision.gameObject.tag == "Coin")
+        if (collision.gameObject.tag == "Coin")
         {
-            GenerateNugget();
+            
             Debug.Log("J'ai touché un coin");
             //Detruit l objet colisionner
-            collision.gameObject.gameObject.SetActive(false);
+            string text = scoreText.text;
+            if (float.TryParse(text, out float originalNumber)) { 
+            float newnumber = originalNumber * 2;
+                scoreText.text = newnumber.ToString();
+            }
+            else
+            {
+                Debug.Log("g pas pu pârse");
+            }
+            Destroy(collision.gameObject.gameObject);
         }
     }
 
