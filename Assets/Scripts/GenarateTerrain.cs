@@ -22,6 +22,7 @@ public class GenarateTerrain : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         prefabIndex = Random.Range(0, 2);
+        Debug.Log("J'ai touché mdr");
         GenerateTerain();
         //xcordinate += -185.3f;
         xcordinate -= 280f;
