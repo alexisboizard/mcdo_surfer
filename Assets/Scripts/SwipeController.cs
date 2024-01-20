@@ -36,12 +36,12 @@ public class SwipeController : MonoBehaviour
 
             switch (touchPhase)
             {
-                case UnityEngine.InputSystem.TouchPhase.Began:
+                case TouchPhase.Began:
                     touchStartPos = Touchscreen.current.primaryTouch.position.ReadValue();
                     isSwiping = true;
                     break;
 
-                case UnityEngine.InputSystem.TouchPhase.Moved:
+                case TouchPhase.Moved:
                     if (isSwiping)
                     {
                         touchEndPos = Touchscreen.current.primaryTouch.position.ReadValue();
@@ -99,7 +99,7 @@ public class SwipeController : MonoBehaviour
                     }
                     break;
 
-                case UnityEngine.InputSystem.TouchPhase.Ended:
+                case TouchPhase.Ended:
                     isSwiping = false;
                     break;
             }

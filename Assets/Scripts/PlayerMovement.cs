@@ -45,21 +45,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.collider.name == "Car")
         {
-            Debug.Log(transform.position.z);
             float position = transform.position.z;
-            switch (position)
-            {
-                case 0.25f:
-                    desiredLane = 1;
-                    break;
-                case -3.25f:
-                    desiredLane = 2;
-                    break;
-                case 3.25f:
-                    desiredLane = 2;
-                    break;
-            }
 
+            Debug.Log(desiredLane);
+            moveOnLane(desiredLane);
         }
     }
     public void moveOnLane(int lane)
