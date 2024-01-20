@@ -20,6 +20,7 @@ public class GroundCheck : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGroundCheck = false;
+           
             Debug.Log("GroundCheck: OnCollisionExit");
         }
     }
