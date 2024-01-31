@@ -18,15 +18,26 @@ public class Nuggets_recolt : MonoBehaviour
     public void Start()
     {
         Debug.Log("start");
-        float delay = Random.Range(2.0f, 7.0f);
-        InvokeRepeating("GenerateNugget", delay, delay);
+        ScheduleRandomDelayOfNuggets();
     }
 
+     private void ScheduleRandomDelayOfNuggets()
+    {
+        float randomDelay = Random.Range(5.0f, 10.0f); // Choisir une plage de délais aléatoires
+        Debug.Log("Next Nuggets delay in " + randomDelay + " seconds.");
+        Invoke("DelayOfNuggets", randomDelay);
+    }
+
+    private void DelayOfNuggets()
+    {
+        GenerateNugget(); // Appeler votre fonction existante
+        ScheduleRandomDelayOfNuggets(); // Planifier le prochain appel avec un délai aléatoire
+    }
 
 
     private void GenerateNugget()
     {
-        Debug.Log("generate");
+        Debug.Log("generate nuggets");
         int nbnuggets = Random.Range(1, 5);
         desiredLanespawn = Random.Range(0, 3);
 
@@ -41,7 +52,6 @@ public class Nuggets_recolt : MonoBehaviour
             Instantiate(recoltPrefab, spawnpoint, Quaternion.identity);
             xcoodonate -= 2f;
         }
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -61,9 +71,7 @@ public class Nuggets_recolt : MonoBehaviour
         
         if (float.TryParse(text, out float originalNumber))
         {
-            Debug.Log("le old is " + originalNumber);
             float newnumber = originalNumber + 1;
-            Debug.Log("le new is " + newnumber);
             scoreText.text = newnumber.ToString();
         }
         else
