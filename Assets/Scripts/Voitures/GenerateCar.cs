@@ -46,7 +46,7 @@ public class GenerateCar : MonoBehaviour
         for (int i = 0; i < carList.Length; i++)
         {
             float carPosition = carList[i].transform.position.z;
-            Debug.Log(i + " = " + (carPosition - playerPosition));
+           // Debug.Log(i + " = " + (carPosition - playerPosition));
             if (carPosition - playerPosition > -5)
             {
                 Debug.Log("Destroy");

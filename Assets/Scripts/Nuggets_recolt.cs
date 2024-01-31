@@ -38,7 +38,7 @@ public class Nuggets_recolt : MonoBehaviour
     private void GenerateNugget()
     {
         Debug.Log("generate nuggets");
-        int nbnuggets = Random.Range(1, 5);
+        int nbnuggets = Random.Range(2, 5);
         desiredLanespawn = Random.Range(0, 3);
 
         float xcoodonate = transform.position.x;
@@ -50,7 +50,7 @@ public class Nuggets_recolt : MonoBehaviour
         {
             spawnpoint = new Vector3(xcoodonate - 50f, ycoodonate, spwnco[desiredLanespawn]);
             Instantiate(recoltPrefab, spawnpoint, Quaternion.identity);
-            xcoodonate -= 2f;
+            xcoodonate -= 3f;
         }
     }
 
