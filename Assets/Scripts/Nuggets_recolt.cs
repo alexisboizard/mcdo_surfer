@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Nuggets_recolt : MonoBehaviour
@@ -11,23 +13,49 @@ public class Nuggets_recolt : MonoBehaviour
     private Vector3 spawnpoint;
     public TMP_Text scoreText;
 
+    private int desiredLanespawn;
+
+    public void Start()
+    {
+        Debug.Log("start");
+        ScheduleRandomDelayOfNuggets();
+    }
+
+     private void ScheduleRandomDelayOfNuggets()
+    {
+        float randomDelay = Random.Range(5.0f, 10.0f); // Choisir une plage de délais aléatoires
+        Debug.Log("Next Nuggets delay in " + randomDelay + " seconds.");
+        Invoke("DelayOfNuggets", randomDelay);
+    }
+
+    private void DelayOfNuggets()
+    {
+        GenerateNugget(); // Appeler votre fonction existante
+        ScheduleRandomDelayOfNuggets(); // Planifier le prochain appel avec un délai aléatoire
+    }
+
+
     private void GenerateNugget()
     {
+        Debug.Log("generate nuggets");
+        int nbnuggets = Random.Range(1, 5);
+        desiredLanespawn = Random.Range(0, 3);
+
         float xcoodonate = transform.position.x;
-        float ycoodonate = transform.rotation.y + 2f;
+        float ycoodonate = transform.position.y;
         float zcoodonate = transform.position.z;
+        float[] spwnco = { -3.25f , 0.25f, 3.25f };
 
-        int[] choices = { -3, 0, 3 };
-        int randomIndex = Random.Range(0, choices.Length);
-
-        spawnpoint = new Vector3(xcoodonate - 50f, ycoodonate, randomIndex);
-        Instantiate(recoltPrefab, spawnpoint, Quaternion.identity);
-
+        for (int i = 0; i < nbnuggets; i++)
+        {
+            spawnpoint = new Vector3(xcoodonate - 50f, ycoodonate, spwnco[desiredLanespawn]);
+            Instantiate(recoltPrefab, spawnpoint, Quaternion.identity);
+            xcoodonate -= 2f;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        GenerateNugget();
         if (collision.gameObject.tag == "Coin")
         { 
             IncrementNumber();
@@ -40,12 +68,10 @@ public class Nuggets_recolt : MonoBehaviour
     {
         string text = scoreText.text;
 
-
+        
         if (float.TryParse(text, out float originalNumber))
         {
-            Debug.Log("le old is " + originalNumber);
             float newnumber = originalNumber + 1;
-            Debug.Log("le new is " + newnumber);
             scoreText.text = newnumber.ToString();
         }
         else
@@ -55,5 +81,6 @@ public class Nuggets_recolt : MonoBehaviour
     }
 
 
-
+    
+   
 }
