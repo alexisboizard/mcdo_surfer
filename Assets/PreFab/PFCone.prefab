@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 78131910757883699}
   - component: {fileID: 5388528276861298111}
   m_Layer: 0
-  m_Name: cone de chantier
+  m_Name: PFCone
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +356,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

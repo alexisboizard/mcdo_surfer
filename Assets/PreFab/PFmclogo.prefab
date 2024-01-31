@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52a53af1e73704af7a3a2e9bb15fc73b, type: 3}
       propertyPath: m_Name
-      value: mclogo
+      value: PFmclogo
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52a53af1e73704af7a3a2e9bb15fc73b, type: 3}
       propertyPath: m_TagString
@@ -96,7 +96,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
