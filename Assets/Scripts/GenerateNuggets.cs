@@ -6,7 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Nuggets_recolt : MonoBehaviour
+public class GenerateNuggets : MonoBehaviour
 {
 
     public GameObject recoltPrefab;
@@ -21,9 +21,9 @@ public class Nuggets_recolt : MonoBehaviour
         ScheduleRandomDelayOfNuggets();
     }
 
-     private void ScheduleRandomDelayOfNuggets()
+    private void ScheduleRandomDelayOfNuggets()
     {
-        float randomDelay = Random.Range(5.0f, 10.0f); // Choisir une plage de délais aléatoires
+        float randomDelay = Random.Range(5.0f, 10.0f); // Choisir une plage de dï¿½lais alï¿½atoires
         Debug.Log("Next Nuggets delay in " + randomDelay + " seconds.");
         Invoke("DelayOfNuggets", randomDelay);
     }
@@ -31,7 +31,7 @@ public class Nuggets_recolt : MonoBehaviour
     private void DelayOfNuggets()
     {
         GenerateNugget(); // Appeler votre fonction existante
-        ScheduleRandomDelayOfNuggets(); // Planifier le prochain appel avec un délai aléatoire
+        ScheduleRandomDelayOfNuggets(); // Planifier le prochain appel avec un dï¿½lai alï¿½atoire
     }
 
 
@@ -44,7 +44,7 @@ public class Nuggets_recolt : MonoBehaviour
         float xcoodonate = transform.position.x;
         float ycoodonate = transform.position.y;
         float zcoodonate = transform.position.z;
-        float[] spwnco = { -3.25f , 0.25f, 3.25f };
+        float[] spwnco = { -3.25f, 0.25f, 3.25f };
 
         for (int i = 0; i < nbnuggets; i++)
         {
@@ -57,7 +57,7 @@ public class Nuggets_recolt : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Coin")
-        { 
+        {
             IncrementNumber();
             Destroy(collision.gameObject.gameObject);
         }
@@ -68,7 +68,7 @@ public class Nuggets_recolt : MonoBehaviour
     {
         string text = scoreText.text;
 
-        
+
         if (float.TryParse(text, out float originalNumber))
         {
             float newnumber = originalNumber + 1;
@@ -76,11 +76,11 @@ public class Nuggets_recolt : MonoBehaviour
         }
         else
         {
-            Debug.Log("g pas pu pârse");
+            Debug.Log("g pas pu parse");
         }
     }
 
 
-    
-   
+
+
 }

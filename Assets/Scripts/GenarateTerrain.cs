@@ -22,17 +22,16 @@ public class GenarateTerrain : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         prefabIndex = Random.Range(0, 2);
-        Debug.Log("J'ai touché mdr");
         GenerateTerain();
         //xcordinate += -185.3f;
         xcordinate -= 280f;
         prefabIndex = 0;
+
     }
 
     private void GenerateTerain()
     {
         spawnpoint = new Vector3(xcordinate, 17.83334f, -9.2f);
-        //spawnpoint = new Vector3(xcordinate, 0.9f, 4.5f);
         Instantiate(prefabs[0], spawnpoint, Quaternion.identity);
         lastPrefabIndex = prefabIndex;
         counter++;
