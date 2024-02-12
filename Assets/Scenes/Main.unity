@@ -2358,6 +2358,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f8f43cdf791492ebbd5cc9a2765b76, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1663435841}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3f8f43cdf791492ebbd5cc9a2765b76, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1663435842}
   m_SourcePrefab: {fileID: 100100000, guid: e3f8f43cdf791492ebbd5cc9a2765b76, type: 3}
 --- !u!1 &343293190
 GameObject:
@@ -8365,6 +8368,7 @@ MonoBehaviour:
   speedMultiplier: 0.5
   scoreText: {fileID: 353991965}
   score: 0
+  prefabs: []
 --- !u!114 &1663435836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8457,6 +8461,21 @@ MonoBehaviour:
   - {fileID: 4699154531702240046, guid: b464dc697d2637c41877cc197694f6cb, type: 3}
   player: {fileID: 1663435829}
   gameOverPanel: {fileID: 915908502}
+--- !u!114 &1663435842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663435829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a588f6a704c4d48887e2a68a1a9dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carPrefab: {fileID: 0}
+  player: {fileID: 0}
+  interval: 5
 --- !u!1 &1668148961
 GameObject:
   m_ObjectHideFlags: 0

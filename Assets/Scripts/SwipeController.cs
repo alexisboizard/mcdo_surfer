@@ -78,7 +78,7 @@ public class SwipeController : MonoBehaviour
                                     if (groundCheck.isGroundCheck)
                                     {
                                         animator.SetBool("isJumping", true);
-                                        transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+                                        transform.position = new Vector3(transform.position.x, transform.position.y + 6, transform.position.z);
                                         StartCoroutine(jumpingEnding());
                                     }
                                 }
