@@ -17,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
     private float startTime;
     public float score;
 
+    public GameObject[] prefabs;
+
+    int numCarTouched = 0;
+
     void Start()
     {
         startTime = Time.time;
@@ -39,27 +43,18 @@ public class PlayerMovement : MonoBehaviour
         // Applique la nouvelle vitesse au joueur
         transform.Translate(Vector3.forward * newSpeed * Time.deltaTime);
         scoreText.text = score.ToString();
+
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.name == "Car")
+        // Gestion des collisions avec les voitures
+        if (collision.collider.tag == "Voitures")
         {
-            Debug.Log(transform.position.z);
-            float position = transform.position.z;
-            switch (position)
+            if (numCarTouched >= 3)
             {
-                case 0.25f:
-                    desiredLane = 1;
-                    break;
-                case -3.25f:
-                    desiredLane = 2;
-                    break;
-                case 3.25f:
-                    desiredLane = 2;
-                    break;
+                Debug.Log("GameOver");
             }
-
         }
     }
     public void moveOnLane(int lane)
