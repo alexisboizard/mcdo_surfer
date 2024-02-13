@@ -21,6 +21,12 @@ public class PlayerMovement : MonoBehaviour
 
     int numCarTouched = 0;
 
+    private bool firstTimePlayed = true;
+
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+    public float volume = 0.5f;
+
     void Start()
     {
         startTime = Time.time;
@@ -43,6 +49,12 @@ public class PlayerMovement : MonoBehaviour
         // Applique la nouvelle vitesse au joueur
         transform.Translate(Vector3.forward * newSpeed * Time.deltaTime);
         scoreText.text = score.ToString();
+        if (firstTimePlayed && score > 30)
+        {
+            firstTimePlayed = false;
+            audioSource.PlayOneShot(audioClip, volume);
+
+        }
 
     }
 
