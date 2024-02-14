@@ -5,15 +5,23 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
     public bool isGroundCheck { get; private set; } = false;
-    void OnTriggerEnter(Collider collider)
+    void OnCollisionEnter(Collision collision)
     {
-        isGroundCheck = true;
-        Debug.Log("GroundCheck: OnTriggerEnter");
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGroundCheck = true;
+            Debug.Log("GroundCheck: OnCollisionEnter");
+        }
     }
 
-    void OnTriggerExit(Collider collider)
+    void OnCollisionExit(Collision collision)
     {
-        isGroundCheck = false;
-        Debug.Log("GroundCheck: OnTriggerExit");
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGroundCheck = false;
+           
+            Debug.Log("GroundCheck: OnCollisionExit");
+        }
     }
 }

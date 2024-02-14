@@ -1,58 +1,87 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
+using TMPro;
 
-public class Player : MonoBehaviour
+
+public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10.0f;
+    public float speedMultiplier = 0.1f; // Ajustez ce coefficient selon vos besoins
+    public TMP_Text scoreText;
+
     private int desiredLane = 2; // 1: Left, 2: Middle, 3: Right
-    public float playerLevel;
-    public Animator animator;
+    Vector3 inputMovement = Vector3.zero;
 
-    private float thespeed = 2.0f;
-    private bool isJumping = false;
+    private float startTime;
+    public float score;
 
+    public GameObject[] prefabs;
+
+    int numCarTouched = 0;
+
+    private bool firstTimePlayed = true;
+
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+    public float volume = 0.5f;
+
+    void Start()
+    {
+        startTime = Time.time;
+    }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        // Calcule le temps écoulé depuis le début du jeu
+        float elapsedTime = Time.time - startTime;
+
+        // Score basé sur le temps écoulé (ajuster la formule selon vos besoins)
+        score = Mathf.Floor(elapsedTime);
+
+        // Affiche ou utilise le score dans le jeu
+        inputMovement.x = transform.position.x;
+        inputMovement.y = transform.position.y;
+        transform.position = inputMovement;
+        float newSpeed = speed + score * speedMultiplier;
+
+        // Applique la nouvelle vitesse au joueur
+        transform.Translate(Vector3.forward * newSpeed * Time.deltaTime);
+        scoreText.text = score.ToString();
+        if (firstTimePlayed && score > 30)
         {
-            if (desiredLane == 3)
-                desiredLane = 2;
-            else
-                desiredLane = 1;
+            firstTimePlayed = false;
+            audioSource.PlayOneShot(audioClip, volume);
+
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Debug.Log("Right Arrow Pressed");
-            if (desiredLane == 1)
-                desiredLane = 2;
-            else
-                desiredLane = 3;
-        }
-        moveOnLane(desiredLane);
 
     }
 
-    void moveOnLane(int lane)
+    void OnCollisionEnter(Collision collision)
     {
-        Vector3 inputMovement = Vector3.zero;
+        // Gestion des collisions avec les voitures
+        if (collision.collider.tag == "Voitures")
+        {
+            if (numCarTouched >= 3)
+            {
+                Debug.Log("GameOver");
+            }
+        }
+    }
+    public void moveOnLane(int lane)
+    {
         if (lane == 1)
         {
-            inputMovement.z = -3f;
+            inputMovement.z = -3.25f;
         }
         else if (lane == 2)
         {
-            inputMovement.z = 0.0f;
+            inputMovement.z = 0.25f;
         }
         else if (lane == 3)
         {
-            inputMovement.z = 3.0f;
+            inputMovement.z = 3.25f;
         }
-        inputMovement.x = -1 * speed * Time.deltaTime * thespeed + transform.position.x;
-
-        inputMovement.y = transform.position.y;
-        transform.position = inputMovement;
     }
 }

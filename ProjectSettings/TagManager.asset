@@ -5,16 +5,20 @@ TagManager:
   serializedVersion: 2
   tags:
   - Terrain
+  - Ground
+  - Car
+  - Coin
+  - Obstacle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Voiture
   - Water
   - UI
   - Ground
   - GroundCheck
-  - 
+  - Player
   - 
   - 
   - 

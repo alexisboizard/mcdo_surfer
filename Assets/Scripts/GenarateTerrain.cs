@@ -2,24 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GenarateTerrain : MonoBehaviour
 {
 
-    public GameObject terrainPrefabs = null;
+    public GameObject[] prefabs;
+    // 0 -> ClassicSteet
+    // 1 -> Classic Street without McDo 
+    // 2 -> Asian Street
 
-    private int xcordinate = -210;
-
+    private float xcordinate = -475f;
+    //private float xcordinate = -380f;
+    private int lastPrefabIndex = 0;
+    private int prefabIndex = 0;
+    private bool isFirstExecution = true;
+    private Vector3 spawnpoint;
+    private int counter = 0;
 
     private void OnTriggerEnter(Collider other)
     {
+        prefabIndex = Random.Range(0, 2);
         GenerateTerain();
-        xcordinate -= 70;
-    }
+        //xcordinate += -185.3f;
+        xcordinate -= 280f;
+        prefabIndex = 0;
 
+    }
 
     private void GenerateTerain()
     {
-        Vector3 spawnpoint = new Vector3(xcordinate, 0, 0);
-        Instantiate(terrainPrefabs, spawnpoint, Quaternion.identity);
+        spawnpoint = new Vector3(xcordinate, 17.83334f, -9.2f);
+        Instantiate(prefabs[0], spawnpoint, Quaternion.identity);
+        lastPrefabIndex = prefabIndex;
+        counter++;
     }
 }
