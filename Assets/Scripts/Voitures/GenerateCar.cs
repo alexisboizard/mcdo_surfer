@@ -34,7 +34,7 @@ public class GenerateCar : MonoBehaviour
         float zcoodonate = transform.position.z;
         float[] spwnco = { -3.25f, 0.25f, 3.25f };
 
-        spawnpoint = new Vector3(xcoodonate - 50f, ycoodonate, spwnco[desiredLanespawn]);
+        spawnpoint = new Vector3(xcoodonate - 50f, 1f, spwnco[desiredLanespawn]);
         Instantiate(recoltPrefab, spawnpoint, Quaternion.identity);
         xcoodonate -= 2f;
     }
