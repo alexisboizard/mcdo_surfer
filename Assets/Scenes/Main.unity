@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8677,13 +8677,8 @@ MonoBehaviour:
   scoreText: {fileID: 353991965}
   score: 0
   prefabs: []
-<<<<<<< Updated upstream
-  audioSource: {fileID: 0}
-  audioClip: {fileID: 0}
-=======
   audioSource: {fileID: 1663435843}
   audioClip: {fileID: 8300000, guid: a43c4cea1bbd34f2996e3512eba10b43, type: 3}
->>>>>>> Stashed changes
   volume: 0.5
 --- !u!114 &1663435836
 MonoBehaviour:
@@ -8741,7 +8736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a588f6a704c4d48887e2a68a1a9dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoltPrefab: {fileID: 0}
+  recoltPrefab: {fileID: 2204894483287572680, guid: 9b36193f2de344997b061ac1e251fab7, type: 3}
 --- !u!114 &1663435840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8776,13 +8771,8 @@ MonoBehaviour:
   - {fileID: 3507911268588397053, guid: 5bfce29e712beb542b5034029b4b8e1f, type: 3}
   player: {fileID: 1663435829}
   gameOverPanel: {fileID: 915908502}
-<<<<<<< Updated upstream
-  audioSource: {fileID: 0}
-  audioClip: {fileID: 0}
-=======
   audioSource: {fileID: 1663435843}
   audioClip: {fileID: 8300000, guid: 885e57488aa9f4eb18351874a9ddbad5, type: 3}
->>>>>>> Stashed changes
   volume: 0.5
 --- !u!114 &1663435842
 MonoBehaviour:
