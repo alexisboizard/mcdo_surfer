@@ -16,9 +16,12 @@ public class SwipeController : MonoBehaviour
     private Vector2 touchEndPos;
     private bool isSwiping = false;
     private bool inRolling = false;
+    private BoxCollider boxCollider; // Référence au BoxCollider attaché au Rigidbody
+
     public void Start()
     {
-
+        // Récupérer le BoxCollider attaché au Rigidbody
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     public void Update()
@@ -90,6 +93,10 @@ public class SwipeController : MonoBehaviour
                                         Debug.Log("roulade");
                                         animator.SetBool("isRolling", true);
                                         StartCoroutine(rollingEnding());
+                                        boxCollider.size = new Vector3(1, 1, 1);
+                                        boxCollider.center = new Vector3(0, 0, 0);
+
+                                        Debug.Log("box collider : ", boxCollider);
                                     }
                                 }
                             }

@@ -11,6 +11,13 @@ public class RouladeBehavior : MonoBehaviour
     public float jumpForce = 100.0f;
     public GroundCheck groundCheck = null;
     private bool isJumping = false;
+    private BoxCollider boxCollider; // Référence au BoxCollider attaché au Rigidbody
+
+    void Start()
+    {
+        // Récupérer le BoxCollider attaché au Rigidbody
+        boxCollider = GetComponent<BoxCollider>();
+    }
 
     void OnEnable()
     {
@@ -33,6 +40,9 @@ public class RouladeBehavior : MonoBehaviour
             isJumping = true;
             animator.SetBool("isJumping", isJumping);
             rigidbody.AddForce(Vector3.up * jumpForce);
+
+            boxCollider.size = new Vector3(0, 0, 0);
+
         }
         else
         {
