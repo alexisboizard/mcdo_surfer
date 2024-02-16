@@ -48,7 +48,7 @@ public class GenerateNuggets : MonoBehaviour
 
         for (int i = 0; i < nbnuggets; i++)
         {
-            spawnpoint = new Vector3(xcoodonate - 50f, 1f, spwnco[desiredLanespawn]);
+            spawnpoint = new Vector3(xcoodonate - 50f, ycoodonate, spwnco[desiredLanespawn]);
             Instantiate(recoltPrefab, spawnpoint, Quaternion.identity);
             xcoodonate -= 3f;
         }
